@@ -3,6 +3,9 @@ const app=express();
 
 let port = 8080;
 
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
 
 
 app.get("/register",(req,res)=>{
@@ -12,7 +15,8 @@ app.get("/register",(req,res)=>{
 });
 
 app.post("/register",(req,res)=>{
-    res.send('standard POST request');
+    let {name, email, password} = req.body;
+    res.send(`hey ${name}, your email is ${email} and password is ${password}`);
     console.log("POST request received");
 });
 
