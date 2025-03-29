@@ -1,0 +1,38 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2e38e;
+}
+h1{
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    color:crimson
+}
+.posts{
+    background-color: #a2d69d;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.user{
+    color: #333;
+    font-size: 20px;
+    margin: 0;
+    font-style: italic;
+}
+.content{
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+}
+
+a{
+    margin: 10px;
+    padding: 5px;
+    text-decoration: none;
+    color: crimson;
+    font-weight: bold;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Post in Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>Here is your Detailed Post</h2>
+
+    <h2>post id : <%= post.id %> </h2>
+
+    <div class="posts">
+        <h3 class="user"><%=post.username%></h3>
+        <p class="content"><%=post.content%></p>
+    </div>
+
+    <br><br>
+    <a href="http://localhost:3000/posts">Back To Main Page</a>
+</body>
+</html>
