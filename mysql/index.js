@@ -9,9 +9,12 @@ const connection = mysql.createConnection({
   password: 'Shinde@123',
 });
 
+let q= "INSERT INTO users(id,username,email,password) VALUES(?,?,?,?)";
+let user = ["123","123_newuser","abc@yahoo.co.in","123456"];
+
 
 try{
-    connection.query("show tables", (err, results) => {
+    connection.query(q,user, (err, results) => {
         if (err) throw err;
         console.log("Tables in the database:", results);
     });
