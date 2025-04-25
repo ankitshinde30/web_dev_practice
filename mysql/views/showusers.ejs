@@ -13,6 +13,7 @@
         <th>Username</th>
         <th>Email</th>
         <th>Edit</th>
+        <th>Delete</th>
         
     </tr>
     <% users.forEach(user => { %>
@@ -21,8 +22,18 @@
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><form method="GET" action="/users/<%=user.id %>/edit"><button onclick="" >Edit</button></form></td>
+        <td><form method="POST" action="/users/<%=user.id %>?_method=DELETE"><button onclick="" >Delete</button></form></td>
       
     </tr>
     <% }) %>
+
+<br>
+<button>
+    <a href="http://localhost:3000/users/insert">Insert New User</a>
+</button>
+<br><br>
+<button>
+    <a href="http://localhost:3000/">Back To Main Page</a>
+</button>
 </body>
 </html>

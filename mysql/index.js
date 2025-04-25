@@ -2,7 +2,7 @@ const { faker, el } = require('@faker-js/faker');
 const mysql = require('mysql2');
 const express = require('express');
 const app = express();
-// Removed as 'uuidv4' is not used
+const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const methodOverride = require("method-override");
 
@@ -100,8 +100,46 @@ app.patch("/users/:id", (req, res) => {
     console.error("Error fetching count:", err);
     res.send("Error fetching count:", err);
   }
+});
 
+//insert data into users table
+app.get("/users/insert",(req,res)=>{
+  res.render("insert.ejs");
+});
 
+//get data from form and insert into users table
+app.post("/users/insert", (req, res) => {
+  const id = uuidv4(); // generate unique ID
+  const { username, password, email } = req.body;
+
+  let q = "INSERT INTO users (id, username, password, email) VALUES (?, ?, ?, ?)";
+
+  try {
+    connection.query(q, [id, username, password, email], (err, result) => {
+      if (err) throw err;
+      console.log("User inserted successfully with UUID:", id);
+      res.redirect("/users");
+    });
+  } catch (err) {
+    console.error("Error inserting user:", err);
+    res.send(`Error inserting user: ${err.message}`);
+  }
+});
+
+//Delete Route
+app.delete("/users/:id", (req, res) => {
+  let { id } = req.params;
+  let q = `DELETE FROM users WHERE id='${id}'`;
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      console.log("User deleted successfully with ID:", id);
+      res.redirect("/users");
+    });
+  } catch (err) {
+    console.error("Error deleting user:", err);
+    res.send(`Error deleting user: ${err.message}`);
+  }
 });
 
 app.listen(port, () => {
