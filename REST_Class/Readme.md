@@ -1,0 +1,1 @@
+Examples of Using REST api by creating an basic post creator with add, delete and view features 
